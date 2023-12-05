@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient, HttpResponse,HttpHeaders} from "@angular/common/http";
-import { Observable } from 'rxjs';
+import {Observable, take} from 'rxjs';
 import {map} from "rxjs/operators";
 
 
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit{
   request!:ReserveRoomRequest;
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
+  welcome! : string;
 
     ngOnInit(){
       this.roomsearch= new FormGroup({
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit{
       this.currentCheckInVal = x.checkin;
       this.currentCheckOutVal = x.checkout;
     });
+    this.httpClient.get(this.baseURL, {responseType: 'text'}).subscribe(welcome=>{this.welcome=<string>welcome});
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
@@ -91,9 +93,6 @@ export interface Roomsearch{
     checkin:string;
     checkout:string;
   }
-
-
-
 
 export interface Room{
   id:string;

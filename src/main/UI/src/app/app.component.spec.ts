@@ -32,4 +32,4 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('LandonHotelApp app is running!');
   });*/
-}); 
+});
