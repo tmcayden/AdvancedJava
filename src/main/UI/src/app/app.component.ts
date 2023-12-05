@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
   welcome! : string;
+  time!: string;
 
     ngOnInit(){
       this.roomsearch= new FormGroup({
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit{
       this.currentCheckOutVal = x.checkout;
     });
     this.httpClient.get(this.baseURL, {responseType: 'text'}).subscribe(welcome=>{this.welcome=<string>welcome});
+    this.httpClient.get(this.baseURL + "/time", {responseType: "text"}).subscribe(time => {this.time=<string>time});
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
