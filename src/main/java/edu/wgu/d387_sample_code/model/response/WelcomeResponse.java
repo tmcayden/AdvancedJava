@@ -22,7 +22,7 @@ public class WelcomeResponse {
     String english = "";
     String french = "";
 
-    @GetMapping("/")
+    @GetMapping("/welcome")
     @CrossOrigin
     public String WelcomeMessage() {
     messageExecutor.execute(() -> {

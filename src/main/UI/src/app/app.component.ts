@@ -46,7 +46,7 @@ export class AppComponent implements OnInit{
       this.currentCheckInVal = x.checkin;
       this.currentCheckOutVal = x.checkout;
     });
-    this.httpClient.get(this.baseURL, {responseType: 'text'}).subscribe(welcome=>{this.welcome=<string>welcome});
+    this.httpClient.get(this.baseURL + "/welcome", {responseType: 'text'}).subscribe(welcome=>{this.welcome=<string>welcome});
     this.httpClient.get(this.baseURL + "/time", {responseType: "text"}).subscribe(time => {this.time=<string>time});
   }
 
